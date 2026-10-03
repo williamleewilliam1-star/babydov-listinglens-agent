@@ -62,13 +62,19 @@ The project includes deterministic image generation, so the agent can be tested 
 
 See [docs/SYNTHETIC_LAB.md](docs/SYNTHETIC_LAB.md) for observed metrics and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the workflow diagram.
 
+## Live evidence demo
+
+Recorded OpenCV 5 evidence: https://williamleewilliam1-star.github.io/babydov-listinglens-agent/
+
+The page is generated from the same agent core and shows the before/after image, measurements, decision, action, re-perception, and final decision. It is intentionally labeled recorded evidence; the final real AWS deployment is tracked separately.
+
 ## OpenCV AI Competition 2026
 
 Target: **Agentic Vision Award**.
 
 The entry is designed around the competition requirement that OpenCV 5 output materially changes a later decision/tool/action. ListingLens exposes that causality directly in its trace.
 
-A meaningful AWS deployment component will be added after the local vision loop is stable; the core does not require cloud credentials to reproduce.
+A deploy-ready AWS S3→Lambda→OpenCV→S3 component lives under `aws/`. The cloud contract is tested locally; real AWS deployment evidence is still pending credentials/account access and is not claimed as completed.
 
 ## License
 
