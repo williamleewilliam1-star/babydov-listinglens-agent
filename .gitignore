@@ -5,3 +5,4 @@ __pycache__/
 artifacts/*.png
 artifacts/*.json
 samples/generated/
+samples/generated-demo/

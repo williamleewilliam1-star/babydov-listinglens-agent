@@ -1,0 +1,401 @@
+{
+  "cases": {
+    "blur": {
+      "after": null,
+      "before": {
+        "bbox": [
+          159,
+          210,
+          583,
+          481
+        ],
+        "border_std": 0.0,
+        "center_offset": 0.0015713484026367722,
+        "height": 900,
+        "highlight_clip_pct": 0.0,
+        "mean_luma": 184.03056049382715,
+        "object_occupancy": 0.34620123456790125,
+        "shadow_clip_pct": 0.0,
+        "sharpness": 0.20378271604938272,
+        "width": 900
+      },
+      "case": "blur",
+      "corrected_image": null,
+      "decision": "HUMAN_RESHOOT",
+      "input_image": "demo-assets/blur-before.png",
+      "opencv_version": "5.0.0",
+      "reason_codes": [
+        "blur"
+      ],
+      "trace": [
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "PERCEPTION",
+          "metrics": {
+            "bbox": [
+              159,
+              210,
+              583,
+              481
+            ],
+            "border_std": 0.0,
+            "center_offset": 0.0015713484026367722,
+            "height": 900,
+            "highlight_clip_pct": 0.0,
+            "mean_luma": 184.03056049382715,
+            "object_occupancy": 0.34620123456790125,
+            "shadow_clip_pct": 0.0,
+            "sharpness": 0.20378271604938272,
+            "width": 900
+          },
+          "step": 1
+        },
+        {
+          "evaluation": {
+            "composition_failures": [],
+            "hard_failures": [
+              "blur"
+            ],
+            "passes": false
+          },
+          "kind": "DECISION",
+          "step": 2
+        },
+        {
+          "action": "REQUEST_HUMAN_RESHOOT",
+          "kind": "ACTION",
+          "reason_codes": [
+            "blur"
+          ],
+          "step": 3
+        }
+      ]
+    },
+    "bright": {
+      "after": null,
+      "before": {
+        "bbox": null,
+        "border_std": 0.0,
+        "center_offset": 1.0,
+        "height": 900,
+        "highlight_clip_pct": 0.6982987654320988,
+        "mean_luma": 248.58306296296297,
+        "object_occupancy": 0.0,
+        "shadow_clip_pct": 0.0,
+        "sharpness": 5.292281481481481,
+        "width": 900
+      },
+      "case": "bright",
+      "corrected_image": null,
+      "decision": "HUMAN_RESHOOT",
+      "input_image": "demo-assets/bright-before.png",
+      "opencv_version": "5.0.0",
+      "reason_codes": [
+        "blur",
+        "overexposed",
+        "object_not_detected"
+      ],
+      "trace": [
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "PERCEPTION",
+          "metrics": {
+            "bbox": null,
+            "border_std": 0.0,
+            "center_offset": 1.0,
+            "height": 900,
+            "highlight_clip_pct": 0.6982987654320988,
+            "mean_luma": 248.58306296296297,
+            "object_occupancy": 0.0,
+            "shadow_clip_pct": 0.0,
+            "sharpness": 5.292281481481481,
+            "width": 900
+          },
+          "step": 1
+        },
+        {
+          "evaluation": {
+            "composition_failures": [],
+            "hard_failures": [
+              "blur",
+              "overexposed",
+              "object_not_detected"
+            ],
+            "passes": false
+          },
+          "kind": "DECISION",
+          "step": 2
+        },
+        {
+          "action": "REQUEST_HUMAN_RESHOOT",
+          "kind": "ACTION",
+          "reason_codes": [
+            "blur",
+            "overexposed",
+            "object_not_detected"
+          ],
+          "step": 3
+        }
+      ]
+    },
+    "dark": {
+      "after": null,
+      "before": {
+        "bbox": [
+          171,
+          222,
+          559,
+          457
+        ],
+        "border_std": 0.0,
+        "center_offset": 0.0015713484026367722,
+        "height": 900,
+        "highlight_clip_pct": 0.0,
+        "mean_luma": 31.022593827160495,
+        "object_occupancy": 0.3153864197530864,
+        "shadow_clip_pct": 0.3017012345679012,
+        "sharpness": 61.047738271604935,
+        "width": 900
+      },
+      "case": "dark",
+      "corrected_image": null,
+      "decision": "HUMAN_RESHOOT",
+      "input_image": "demo-assets/dark-before.png",
+      "opencv_version": "5.0.0",
+      "reason_codes": [
+        "blur",
+        "underexposed"
+      ],
+      "trace": [
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "PERCEPTION",
+          "metrics": {
+            "bbox": [
+              171,
+              222,
+              559,
+              457
+            ],
+            "border_std": 0.0,
+            "center_offset": 0.0015713484026367722,
+            "height": 900,
+            "highlight_clip_pct": 0.0,
+            "mean_luma": 31.022593827160495,
+            "object_occupancy": 0.3153864197530864,
+            "shadow_clip_pct": 0.3017012345679012,
+            "sharpness": 61.047738271604935,
+            "width": 900
+          },
+          "step": 1
+        },
+        {
+          "evaluation": {
+            "composition_failures": [],
+            "hard_failures": [
+              "blur",
+              "underexposed"
+            ],
+            "passes": false
+          },
+          "kind": "DECISION",
+          "step": 2
+        },
+        {
+          "action": "REQUEST_HUMAN_RESHOOT",
+          "kind": "ACTION",
+          "reason_codes": [
+            "blur",
+            "underexposed"
+          ],
+          "step": 3
+        }
+      ]
+    },
+    "good": {
+      "after": null,
+      "before": {
+        "bbox": [
+          171,
+          222,
+          559,
+          457
+        ],
+        "border_std": 0.0,
+        "center_offset": 0.0015713484026367722,
+        "height": 900,
+        "highlight_clip_pct": 0.0,
+        "mean_luma": 184.03001728395063,
+        "object_occupancy": 0.3153864197530864,
+        "shadow_clip_pct": 0.0,
+        "sharpness": 229.5832938271605,
+        "width": 900
+      },
+      "case": "good",
+      "corrected_image": null,
+      "decision": "ACCEPT",
+      "input_image": "demo-assets/good-before.png",
+      "opencv_version": "5.0.0",
+      "reason_codes": [],
+      "trace": [
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "PERCEPTION",
+          "metrics": {
+            "bbox": [
+              171,
+              222,
+              559,
+              457
+            ],
+            "border_std": 0.0,
+            "center_offset": 0.0015713484026367722,
+            "height": 900,
+            "highlight_clip_pct": 0.0,
+            "mean_luma": 184.03001728395063,
+            "object_occupancy": 0.3153864197530864,
+            "shadow_clip_pct": 0.0,
+            "sharpness": 229.5832938271605,
+            "width": 900
+          },
+          "step": 1
+        },
+        {
+          "evaluation": {
+            "composition_failures": [],
+            "hard_failures": [],
+            "passes": true
+          },
+          "kind": "DECISION",
+          "step": 2
+        },
+        {
+          "action": "NO_CHANGE",
+          "kind": "ACTION",
+          "step": 3
+        }
+      ]
+    },
+    "margin": {
+      "after": {
+        "bbox": [
+          35,
+          28,
+          289,
+          237
+        ],
+        "border_std": 0.0,
+        "center_offset": 0.0,
+        "height": 293,
+        "highlight_clip_pct": 0.0,
+        "mean_luma": 124.22721438961088,
+        "object_occupancy": 0.6511546103605959,
+        "shadow_clip_pct": 0.0,
+        "sharpness": 917.4767604361756,
+        "width": 359
+      },
+      "before": {
+        "bbox": [
+          189,
+          305,
+          289,
+          237
+        ],
+        "border_std": 0.0,
+        "center_offset": 0.2655020866673017,
+        "height": 900,
+        "highlight_clip_pct": 0.0,
+        "mean_luma": 226.70596790123457,
+        "object_occupancy": 0.08455925925925926,
+        "shadow_clip_pct": 0.0,
+        "sharpness": 119.14398518518519,
+        "width": 900
+      },
+      "case": "margin",
+      "corrected_image": "demo-assets/margin-after.png",
+      "decision": "ACCEPT_AFTER_FIX",
+      "input_image": "demo-assets/margin-before.png",
+      "opencv_version": "5.0.0",
+      "reason_codes": [],
+      "trace": [
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "PERCEPTION",
+          "metrics": {
+            "bbox": [
+              189,
+              305,
+              289,
+              237
+            ],
+            "border_std": 0.0,
+            "center_offset": 0.2655020866673017,
+            "height": 900,
+            "highlight_clip_pct": 0.0,
+            "mean_luma": 226.70596790123457,
+            "object_occupancy": 0.08455925925925926,
+            "shadow_clip_pct": 0.0,
+            "sharpness": 119.14398518518519,
+            "width": 900
+          },
+          "step": 1
+        },
+        {
+          "evaluation": {
+            "composition_failures": [
+              "too_much_margin",
+              "off_center"
+            ],
+            "hard_failures": [],
+            "passes": false
+          },
+          "kind": "DECISION",
+          "step": 2
+        },
+        {
+          "action": "AUTO_CROP",
+          "kind": "ACTION",
+          "output": "/Users/ivanbabydov/Desktop/babydov-listinglens-agent/docs/demo-assets/_agent-output/margin.autocrop.png",
+          "step": 3,
+          "triggered_by": [
+            "off_center",
+            "too_much_margin"
+          ]
+        },
+        {
+          "engine": "OpenCV 5.0.0",
+          "kind": "RE_PERCEPTION",
+          "metrics": {
+            "bbox": [
+              35,
+              28,
+              289,
+              237
+            ],
+            "border_std": 0.0,
+            "center_offset": 0.0,
+            "height": 293,
+            "highlight_clip_pct": 0.0,
+            "mean_luma": 124.22721438961088,
+            "object_occupancy": 0.6511546103605959,
+            "shadow_clip_pct": 0.0,
+            "sharpness": 917.4767604361756,
+            "width": 359
+          },
+          "step": 4
+        },
+        {
+          "evaluation": {
+            "composition_failures": [],
+            "hard_failures": [],
+            "passes": true
+          },
+          "kind": "FINAL_DECISION",
+          "step": 5
+        }
+      ]
+    }
+  },
+  "generated_from": "scripts/build_demo.py",
+  "product": "ListingLens Agent"
+}

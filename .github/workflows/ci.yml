@@ -20,4 +20,6 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python listinglens.py --synthetic-suite > /tmp/listinglens.json
+      - run: python scripts/build_demo.py
+      - run: python -c "import json; d=json.load(open('docs/demo-data.json')); assert d['cases']['margin']['decision']=='ACCEPT_AFTER_FIX'; assert len(d['cases'])==5"
       - run: python -c "import cv2; assert cv2.__version__.startswith('5.0.0')"
