@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: ListingLens Agent — OpenCV 5 S3-triggered catalog QA
+
+Resources:
+  CatalogBucket:
+    Type: AWS::S3::Bucket
+
+  ListingLensFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ..
+      DockerTag: listinglens-opencv5
+    Properties:
+      PackageType: Image
+      MemorySize: 2048
+      Timeout: 60
+      Environment:
+        Variables:
+          OUTPUT_BUCKET: !Ref CatalogBucket
+          OUTPUT_PREFIX: listinglens-results
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref CatalogBucket
+        - S3WritePolicy:
+            BucketName: !Ref CatalogBucket
+      Events:
+        CatalogUpload:
+          Type: S3
+          Properties:
+            Bucket: !Ref CatalogBucket
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: incoming/
+
+Outputs:
+  CatalogBucketName:
+    Value: !Ref CatalogBucket
+  ListingLensFunctionName:
+    Value: !Ref ListingLensFunction
