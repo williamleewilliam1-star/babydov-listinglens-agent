@@ -105,3 +105,8 @@ A Remotion judge cut has been rendered from committed evidence assets and publis
 - The current agent does not perform perspective correction, segmentation with a learned model, or color-reference calibration.
 - The recorded GitHub Pages demo is reproducible evidence, not a substitute for the required final AWS deployment.
 - Real-world evaluation on a licensed product-photo set is still planned.
+
+
+## Submission receipt
+
+Devpost submission is confirmed at https://devpost.com/software/listinglens-agent. The submission remains editable until the competition deadline; any later AWS evidence must update this same submission rather than creating a duplicate.
