@@ -96,7 +96,7 @@ The MVP analyzes image quality and composition only. It does not infer identity,
 
 ## Judge demonstration
 
-A Remotion judge cut has been rendered locally from committed evidence assets. The verified draft is 80 seconds, 1920×1080, H.264 at 30 fps. It shows the team attribution, the perception → decision → action → re-perception loop, a successful no-change case, the autonomous crop/re-measure case, three human-escalation failures, AWS architecture, and the 5/5 deterministic evaluation summary. The cloud scene intentionally says live AWS deployment is pending until a real receipt exists.
+A Remotion judge cut has been rendered from committed evidence assets and published at https://williamleewilliam1-star.github.io/babydov-listinglens-agent/judge-video.html. The verified cut is 80 seconds, 1920×1080, H.264 at 30 fps. It shows the team attribution, the perception → decision → action → re-perception loop, a successful no-change case, the autonomous crop/re-measure case, three human-escalation failures, AWS architecture, and the 5/5 deterministic evaluation summary. The cloud scene intentionally says live AWS deployment is pending until a real receipt exists.
 
 ## Limitations
 

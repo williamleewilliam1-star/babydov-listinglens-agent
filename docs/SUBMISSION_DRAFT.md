@@ -18,7 +18,7 @@ The OpenCV result changes the next action. The system exposes the full perceptio
 - AWS Lambda container + S3 event/data plane (SAM validate/build verified locally; live AWS deployment evidence pending)
 - GitHub Actions
 - GitHub Pages evidence demo
-- Remotion judge-video source with a verified 80-second 1080p H.264 render
+- Remotion judge-video source with a verified 80-second 1080p H.264 render, published at https://williamleewilliam1-star.github.io/babydov-listinglens-agent/judge-video.html
 
 ## Links
 - Source: https://github.com/williamleewilliam1-star/babydov-listinglens-agent
@@ -34,5 +34,5 @@ Yes — intended target.
 
 ## Honest pending items
 - real AWS deployment evidence (AWS CLI is not currently authenticated on the preparation Mac)
-- public/unlisted judge-accessible upload of the already-rendered 80-second Remotion cut; after AWS deployment, update the cloud scene and re-render the final cut
+- after AWS deployment, update the cloud scene and re-render/replace the published judge cut
 - final Devpost submission
