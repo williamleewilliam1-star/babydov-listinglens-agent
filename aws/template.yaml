@@ -2,29 +2,40 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: ListingLens Agent — OpenCV 5 S3-triggered catalog QA
 
+Parameters:
+  CatalogBucketName:
+    Type: String
+    Description: Globally unique S3 bucket name for ListingLens inputs and results.
+    AllowedPattern: "^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$"
+    ConstraintDescription: Use a valid 3-63 character lowercase S3 bucket name.
+
 Resources:
   CatalogBucket:
     Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref CatalogBucketName
 
   ListingLensFunction:
     Type: AWS::Serverless::Function
     Metadata:
-      Dockerfile: Dockerfile
+      Dockerfile: aws/Dockerfile
       DockerContext: ..
       DockerTag: listinglens-opencv5
     Properties:
       PackageType: Image
+      Architectures:
+        - arm64
       MemorySize: 2048
       Timeout: 60
       Environment:
         Variables:
-          OUTPUT_BUCKET: !Ref CatalogBucket
+          OUTPUT_BUCKET: !Ref CatalogBucketName
           OUTPUT_PREFIX: listinglens-results
       Policies:
         - S3ReadPolicy:
-            BucketName: !Ref CatalogBucket
+            BucketName: !Ref CatalogBucketName
         - S3WritePolicy:
-            BucketName: !Ref CatalogBucket
+            BucketName: !Ref CatalogBucketName
       Events:
         CatalogUpload:
           Type: S3
@@ -39,6 +50,6 @@ Resources:
 
 Outputs:
   CatalogBucketName:
-    Value: !Ref CatalogBucket
+    Value: !Ref CatalogBucketName
   ListingLensFunctionName:
     Value: !Ref ListingLensFunction

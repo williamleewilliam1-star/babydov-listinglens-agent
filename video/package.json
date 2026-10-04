@@ -1,0 +1,15 @@
+{
+  "name": "listinglens-judge-video",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "render": "remotion render src/index.jsx ListingLensJudge out/listinglens-judge-draft.mp4 --codec=h264 --crf=18",
+    "still": "remotion still src/index.jsx ListingLensJudge out/listinglens-poster.png --frame=120"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.532"
+  }
+}

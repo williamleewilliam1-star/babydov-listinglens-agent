@@ -76,7 +76,7 @@ The repository contains a deploy-ready AWS SAM image function under `aws/`.
 - If a bounded crop is performed, `corrected.png` is persisted beside it.
 - The SAM template scopes Lambda read/write permissions to its competition bucket.
 
-The cloud contract is tested locally through a fake S3 client. A real AWS deployment is still required before final submission and must not be represented as completed until external deployment evidence exists.
+The cloud contract is tested locally through a fake S3 client. The SAM template also passes `sam validate --lint`, and the container-image function completes `sam build` against a local arm64 Docker/Colima runtime. These checks prove the deployment package is reproducible locally; they are not a live-cloud claim. A real AWS deployment is still required before final submission and must not be represented as completed until external deployment evidence exists.
 ## Failure handling and human control
 
 ListingLens is intentionally conservative.
@@ -93,6 +93,10 @@ This keeps the workflow auditable and limits automation to a correction that can
 ## Responsible use
 
 The MVP analyzes image quality and composition only. It does not infer identity, protected traits, demographics, emotion, or individual behavior. It uses synthetic images for its built-in evaluation and accepts local user-supplied product images.
+
+## Judge demonstration
+
+A Remotion judge cut has been rendered locally from committed evidence assets. The verified draft is 80 seconds, 1920×1080, H.264 at 30 fps. It shows the team attribution, the perception → decision → action → re-perception loop, a successful no-change case, the autonomous crop/re-measure case, three human-escalation failures, AWS architecture, and the 5/5 deterministic evaluation summary. The cloud scene intentionally says live AWS deployment is pending until a real receipt exists.
 
 ## Limitations
 
