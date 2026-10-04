@@ -76,7 +76,7 @@ The entry is designed around the competition requirement that OpenCV 5 output ma
 
 A deploy-ready AWS S3→Lambda→OpenCV→S3 component lives under `aws/`. The cloud contract is tested locally, the SAM template validates, and the arm64 Lambda container completes a local SAM build. Real AWS deployment evidence is still pending credentials/account access and is not claimed as completed.
 
-The Remotion judge-video source lives under `video/`. A verified local draft renders to an 80-second 1920×1080 H.264 cut; its cloud scene deliberately remains marked pending until a real AWS receipt exists.
+The Remotion judge-video source lives under `video/`. A verified 80-second 1920×1080 H.264 cut is published for judges at https://williamleewilliam1-star.github.io/babydov-listinglens-agent/judge-video.html. Its cloud scene deliberately remains marked pending until a real AWS receipt exists, and the committed manifest pins the exact SHA-256 and render metadata.
 
 ## License
 

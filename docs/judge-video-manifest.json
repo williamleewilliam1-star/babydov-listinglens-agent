@@ -1,0 +1,19 @@
+{
+  "schema": "listinglens.judge_video.v1",
+  "file": "docs/listinglens-judge-video.mp4",
+  "sha256": "81643f8a8a1febfd5ade05e90ff4bc04231678dca826a784140fc7c8f247955a",
+  "bytes": 1758098,
+  "duration_seconds": 80.0,
+  "video": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "pix_fmt": "yuvj420p",
+    "r_frame_rate": "30/1",
+    "side_data_list": [
+      {}
+    ]
+  },
+  "source": "video/out/listinglens-judge-draft.mp4",
+  "status": "pre-AWS judge cut; cloud scene explicitly marks live AWS deployment pending"
+}
