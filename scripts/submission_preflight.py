@@ -49,6 +49,8 @@ def check_demo_data() -> dict:
     }
     versions = sorted({c.get("opencv_version") for c in cases.values()})
     return {"case_count": len(cases), "mismatches": mismatches, "opencv_versions": versions}
+
+
 def check_judge_video() -> dict:
     manifest_path = ROOT / "docs/judge-video-manifest.json"
     video_path = ROOT / "docs/listinglens-judge-video.mp4"
@@ -108,6 +110,46 @@ def check_devpost_submission() -> dict:
         return {"ok": False, "error": str(exc)}
 
 
+def check_aws_live_receipt() -> dict:
+    path = ROOT / "artifacts/aws-live-receipt.json"
+    if not path.exists():
+        return {"ok": False, "error": "live AWS receipt missing"}
+    try:
+        receipt = json.loads(path.read_text())
+        e2e = receipt.get("e2e") or {}
+        expected = {
+            "good": "ACCEPT",
+            "margin": "ACCEPT_AFTER_FIX",
+            "blur": "HUMAN_RESHOOT",
+        }
+        decisions_ok = all(
+            e2e.get(name, {}).get("actual") == decision
+            and e2e.get(name, {}).get("opencv_version") == "5.0.0"
+            for name, decision in expected.items()
+        )
+        lambda_ok = (
+            receipt.get("lambda", {}).get("architecture") == "arm64"
+            and receipt.get("lambda", {}).get("package_type") == "Image"
+            and receipt.get("stack_status") in {"CREATE_COMPLETE", "UPDATE_COMPLETE"}
+        )
+        security = receipt.get("security") or {}
+        redaction_ok = (
+            security.get("raw_account_id_committed") is False
+            and security.get("raw_bucket_name_committed") is False
+            and security.get("credentials_committed") is False
+        )
+        return {
+            "ok": bool(decisions_ok and lambda_ok and redaction_ok),
+            "region": receipt.get("region"),
+            "stack_status": receipt.get("stack_status"),
+            "lambda": receipt.get("lambda"),
+            "e2e_decisions": {name: e2e.get(name, {}).get("actual") for name in expected},
+            "redaction_ok": redaction_ok,
+        }
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
 def check_public_demo() -> dict:
     try:
         req = urllib.request.Request(DEMO_URL, headers={"User-Agent": "ListingLens-Preflight/1.0"})
@@ -138,12 +180,14 @@ def main() -> int:
         },
         "judge_video": check_judge_video(),
         "devpost_submission": check_devpost_submission(),
+        "aws_live": check_aws_live_receipt(),
         "public_demo": (
             check_public_demo()
             if args.network
             else {"ok": None, "skipped": "run with --network"}
         ),
     }
+
     blockers = []
     if missing:
         blockers.append("required_files_missing")
@@ -153,15 +197,10 @@ def main() -> int:
         blockers.append("judge_video_invalid")
     if not checks["devpost_submission"]["ok"]:
         blockers.append("devpost_submission_unconfirmed")
+    if not checks["aws_live"]["ok"]:
+        blockers.append("real_aws_deployment_evidence_pending")
     if args.network and not checks["public_demo"]["ok"]:
         blockers.append("public_demo_unreachable")
-
-    # Final-submission gates that still require external evidence/actions.
-    blockers.extend(
-        [
-            "real_aws_deployment_evidence_pending",
-        ]
-    )
 
     payload = {
         "project": "ListingLens Agent",
@@ -173,7 +212,8 @@ def main() -> int:
     print(json.dumps(payload, indent=2))
     return 0 if all(
         c.get("ok") is not False
-        for c in checks.values()
+        for name, c in checks.items()
+        if name != "aws_live" or (ROOT / "artifacts/aws-live-receipt.json").exists()
     ) else 1
 
 
