@@ -6,3 +6,9 @@ artifacts/*.png
 artifacts/*.json
 samples/generated/
 samples/generated-demo/
+
+# Remotion judge-video build artifacts
+video/node_modules/
+video/out/
+
+.aws-sam/

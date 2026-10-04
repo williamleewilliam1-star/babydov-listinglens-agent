@@ -15,9 +15,10 @@ The OpenCV result changes the next action. The system exposes the full perceptio
 ## Built with
 - OpenCV 5.0.0
 - Python / NumPy
-- AWS Lambda container + S3 event/data plane (deploy-ready; final live evidence pending)
+- AWS Lambda container + S3 event/data plane (SAM validate/build verified locally; live AWS deployment evidence pending)
 - GitHub Actions
 - GitHub Pages evidence demo
+- Remotion judge-video source with a verified 80-second 1080p H.264 render
 
 ## Links
 - Source: https://github.com/williamleewilliam1-star/babydov-listinglens-agent
@@ -32,6 +33,6 @@ Five deterministic synthetic cases cover success, an autonomous recoverable comp
 Yes — intended target.
 
 ## Honest pending items
-- real AWS deployment evidence
-- final judge-accessible video (≤5 minutes)
+- real AWS deployment evidence (AWS CLI is not currently authenticated on the preparation Mac)
+- public/unlisted judge-accessible upload of the already-rendered 80-second Remotion cut; after AWS deployment, update the cloud scene and re-render the final cut
 - final Devpost submission
