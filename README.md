@@ -66,6 +66,8 @@ See [docs/SYNTHETIC_LAB.md](docs/SYNTHETIC_LAB.md) for observed metrics and [doc
 
 Recorded OpenCV 5 evidence: https://williamleewilliam1-star.github.io/babydov-listinglens-agent/
 
+Devpost submission: https://devpost.com/software/listinglens-agent
+
 The page is generated from the same agent core and shows the before/after image, measurements, decision, action, re-perception, and final decision. It is intentionally labeled recorded evidence; the final real AWS deployment is tracked separately.
 
 ## OpenCV AI Competition 2026

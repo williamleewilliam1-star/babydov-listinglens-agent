@@ -25,6 +25,7 @@ REQUIRED = [
     "docs/judge-video.html",
     "docs/judge-video-manifest.json",
     "docs/listinglens-judge-video.mp4",
+    "docs/devpost-submission.json",
     "aws/Dockerfile",
     "aws/template.yaml",
     "aws/lambda_handler.py",
@@ -83,6 +84,30 @@ def check_judge_video() -> dict:
         return {"ok": False, "error": str(exc)}
 
 
+def check_devpost_submission() -> dict:
+    receipt_path = ROOT / "docs/devpost-submission.json"
+    if not receipt_path.exists():
+        return {"ok": False, "error": "Devpost submission receipt missing"}
+    try:
+        receipt = json.loads(receipt_path.read_text())
+        ok = (
+            receipt.get("status") == "confirmed"
+            and receipt.get("project") == "ListingLens Agent"
+            and receipt.get("public_project_url") == "https://devpost.com/software/listinglens-agent"
+            and receipt.get("confirmation_email_subject") == "Submission confirmed: ListingLens Agent"
+            and str(receipt.get("submission_id")) == "1214681"
+        )
+        return {
+            "ok": ok,
+            "status": receipt.get("status"),
+            "public_project_url": receipt.get("public_project_url"),
+            "confirmed_at": receipt.get("confirmed_at"),
+            "video_url": receipt.get("video_url"),
+        }
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
 def check_public_demo() -> dict:
     try:
         req = urllib.request.Request(DEMO_URL, headers={"User-Agent": "ListingLens-Preflight/1.0"})
@@ -112,6 +137,7 @@ def main() -> int:
             **demo,
         },
         "judge_video": check_judge_video(),
+        "devpost_submission": check_devpost_submission(),
         "public_demo": (
             check_public_demo()
             if args.network
@@ -125,6 +151,8 @@ def main() -> int:
         blockers.append("demo_evidence_invalid")
     if not checks["judge_video"]["ok"]:
         blockers.append("judge_video_invalid")
+    if not checks["devpost_submission"]["ok"]:
+        blockers.append("devpost_submission_unconfirmed")
     if args.network and not checks["public_demo"]["ok"]:
         blockers.append("public_demo_unreachable")
 
@@ -132,7 +160,6 @@ def main() -> int:
     blockers.extend(
         [
             "real_aws_deployment_evidence_pending",
-            "devpost_final_submission_pending",
         ]
     )
 

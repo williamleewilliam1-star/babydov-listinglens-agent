@@ -32,7 +32,11 @@ Five deterministic synthetic cases cover success, an autonomous recoverable comp
 ## Agentic Vision Award
 Yes — intended target.
 
+## Submission status
+- Devpost submission confirmed: https://devpost.com/software/listinglens-agent
+- judge video: https://youtu.be/AuP5tELYp_U
+
 ## Honest pending items
 - real AWS deployment evidence (AWS CLI is not currently authenticated on the preparation Mac)
 - after AWS deployment, update the cloud scene and re-render/replace the published judge cut
-- final Devpost submission
+- edit the existing Devpost submission with verified AWS evidence; do not create a second submission

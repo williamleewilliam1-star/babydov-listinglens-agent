@@ -1,0 +1,14 @@
+{
+  "schema": "listinglens.devpost_submission.v1",
+  "competition": "OpenCV AI Competition 2026, powered by AWS",
+  "project": "ListingLens Agent",
+  "status": "confirmed",
+  "public_project_url": "https://devpost.com/software/listinglens-agent",
+  "submission_id": "1214681",
+  "confirmation_email_subject": "Submission confirmed: ListingLens Agent",
+  "confirmation_email_id": "1a105523d8779cbe",
+  "confirmed_at": "2026-10-04T05:10:36Z",
+  "video_url": "https://youtu.be/AuP5tELYp_U",
+  "source_repository": "https://github.com/williamleewilliam1-star/babydov-listinglens-agent",
+  "editable_until_deadline": true
+}
